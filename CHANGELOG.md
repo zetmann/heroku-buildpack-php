@@ -1,5 +1,11 @@
 # heroku-buildpack-php CHANGELOG
 
+## v1?? (2018-??-??)
+
+### CHG
+
+- Graceful shutdown for boot scripts on SIGTERM and SIGINT [David Zuelke]
+
 ## v137 (2018-06-26)
 
 ### ADD
