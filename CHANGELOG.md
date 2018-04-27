@@ -6,6 +6,7 @@
 
 - Graceful shutdown for boot scripts on SIGTERM and SIGINT [David Zuelke]
 - Translate `NEW_RELIC_LOG_LEVEL` values "verbose" and "verbosedebug" to "debug" for `newrelic-daemon` [David Zuelke]
+- Dynamically poll for `newrelic-daemon` readiness on dyno boot instead of using blanket two-second wait [David Zuelke]
 
 ## v137 (2018-06-26)
 
