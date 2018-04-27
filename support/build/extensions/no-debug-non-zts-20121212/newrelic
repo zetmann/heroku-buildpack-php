@@ -64,14 +64,9 @@ if [[ -n "$NEW_RELIC_LICENSE_KEY" ]]; then
 		# The daemon is a started in foreground mode so it will not daemonize
 		# (i.e. disassociate from the controlling TTY and disappear into the
 		# background).
-		#
-		# Perpetually tail and redirect the daemon log file to stderr so that it
-		# may be observed via 'heroku logs'.
-		touch /tmp/heroku.ext-newrelic.newrelic-daemon.${PORT}.log
-		tail -qF -n 0 /tmp/heroku.ext-newrelic.newrelic-daemon.${PORT}.log 1>&2 &
 
 		# daemon start
-		/app/.heroku/php/bin/newrelic-daemon --foreground --port "@newrelic-daemon" --logfile "/tmp/heroku.ext-newrelic.newrelic-daemon.${PORT}.log" --loglevel "${NEW_RELIC_LOG_LEVEL}" --pidfile "/tmp/newrelic-daemon.pid" &
+		/app/.heroku/php/bin/newrelic-daemon --foreground --port "@newrelic-daemon" --logfile "/dev/stderr" --loglevel "${NEW_RELIC_LOG_LEVEL}" --pidfile "/tmp/newrelic-daemon.pid" &
 
 		# give it a moment to connect
 		sleep 2
