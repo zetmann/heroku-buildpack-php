@@ -677,3 +677,14 @@ fi
 # done with platform installs; restore COMPOSER from previous value
 export COMPOSER="$COMPOSER_bak"
 unset COMPOSER_bak
+
+
+if [ -z "$DEPLOY_ARTISAN_TASKS" ]; then
+  echo "DEPLOY_ARTISAN_TASKS has not been set"
+  echo "You can set it with:"
+  echo 'heroku config:set DEPLOY_ARTISAN_TASKS="tasks to run"'
+  exit 0
+fi
+
+# run artisan commands
+cd $build_dir && php artisan $DEPLOY_ARTISAN_TASKS
